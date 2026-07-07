@@ -12,26 +12,32 @@ def play():
     print("Guess the number from 1-100!")
 
 
-    tries = 11
+    tries = 10
     random_number = random.randint(1, 100)
+
     for i in range(tries):
-        if tries == 0:
-            print("You have lost the game")
-            loses += 1
-            break
-        tries -= 1
         print(f"You have {tries} tries")
         user_number = int(input("Guess the number: "))
         if user_number > 100:
             print("Invalid, your guess must be 1-100 only.")
+            if tries == 0:
+                print("You lost!")
         elif user_number == random_number:
             print("You have guessed the number!")
             wins += 1
             break
         elif user_number > random_number:
+            tries -= 1
             print("Your guess is too high!")
+            if tries == 0:
+                print("You lost!")
         elif user_number < random_number:
+            tries -= 1
             print("Your guess is too low!")
+            if tries == 0:
+                print("You lost!")
+
+
 
 
 while True:
