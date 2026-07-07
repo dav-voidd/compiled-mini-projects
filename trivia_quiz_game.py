@@ -15,7 +15,7 @@ def answer_questions():
         number += 1
         print(f"{number}. {key}")
         user_answer = input(f"Whats the answer for number {number}? : ")
-        if user_answer in q_and_a.values():
+        if user_answer == q_and_a[key]:
             score += 1
             print("Correct!")
         elif user_answer not in q_and_a.values():
