@@ -1,10 +1,10 @@
 #Number Guessing Game
 import random
 
+from final_random_number_guessing_game import fake_tries
 
 wins = 0
 loses = 0
-fake_tries = 10
 
 
 
@@ -29,16 +29,19 @@ class Play:
     @staticmethod
     def add_score():
         with open("high_score.txt", "w") as file:
-            pass
-        with open("high_score.txt", "a") as file:
             file.write(f"{fake_tries}")
 
 
     @staticmethod
     def check_score():
-        with open("high_score.txt", "r") as file:
-            content = file.read()
-            return content
+        try:
+            with open("high_score.txt", "r") as file:
+                content = file.read().strip()
+                if content == "":
+                    return "10"
+                return content
+        except FileNotFoundError:
+            return "10"
 
 
 
@@ -55,6 +58,7 @@ class Play:
 
         random_number = random.randint(1, 100)
         tries = 10
+
         while True:
             if tries == 0:
                 print("You lost!")
@@ -91,6 +95,7 @@ while True:
     user_choice = input("Do you want to play? (y/n): ").strip().lower()
 
     if user_choice == 'y':
+        fake_tries = 10
         Play.play()
     elif user_choice == 'n':
         print("You have exited the game.")
