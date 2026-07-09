@@ -23,13 +23,15 @@ class Type:
         if len(self.my_undo) > 0:
             save_list = self.my_undo.pop()
             self.my_redo.append(save_list)
-        return "no more words"
+        else:
+            return "no more words"
 
     def redo(self):
         if len(self.my_redo) > 0:
             save_list = self.my_redo.pop()
             self.my_undo.append(save_list)
-        return "no more words"
+        else:
+            return "no more words"
 
     def get_current_text(self):
         return " ".join(self.my_undo)
