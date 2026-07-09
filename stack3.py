@@ -23,6 +23,7 @@ class Type:
         if len(self.my_undo) > 0:
             save_list = self.my_undo.pop()
             self.my_redo.append(save_list)
+            return None
         else:
             return "no more words"
 
@@ -30,6 +31,7 @@ class Type:
         if len(self.my_redo) > 0:
             save_list = self.my_redo.pop()
             self.my_undo.append(save_list)
+            return None
         else:
             return "no more words"
 
