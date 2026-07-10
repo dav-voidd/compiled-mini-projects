@@ -6,7 +6,11 @@ class Stack:
         self.stack = list()
 
     def push(self, name):
-        self.stack.append(name)
+        if len(self.stack) < 5:
+            self.stack.append(name)
+        elif len(self.stack) == 5:
+            print("Stack overflow!")
+
 
     def count(self):
         return self.stack
@@ -15,15 +19,7 @@ class Stack:
         return str(self.stack)
 
 obj = Stack()
-
 while True:
-    if len(obj.count()) < 5:
         user_input = input("Put item: ")
         obj.push(user_input)
-        print(obj.stack)
-    elif len(obj.count()) == 5:
-        user_input = input("Put item: ")
-        print("Stack overflow! Cannot add more items.")
-    else:
-        pass
-
+        print(obj.count())
