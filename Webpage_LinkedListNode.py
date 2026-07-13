@@ -1,5 +1,4 @@
 #Webpage Node
-from http.cookiejar import cut_port_re
 
 
 class PageNode:
