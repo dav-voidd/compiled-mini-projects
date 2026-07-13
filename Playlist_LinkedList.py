@@ -29,11 +29,14 @@ class Playlist:
         if self.head is None:
             print("The playlist is empty add more songs!")
             return
-
+        
         print(f"Skipping: {self.current.song_title}")
         self.current = self.current.next
-        print(f"Now playing: {self.current.song_title}")
 
+        if self.current is not None:
+            print(f"Now playing: {self.current.song_title}")
+        else:
+            print("Reached the end of the playlist. No more songs left!)
 
     def play_all(self):
         current_song = self.current
