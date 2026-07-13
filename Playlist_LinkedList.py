@@ -10,32 +10,30 @@ class SongNode:
 
 class Playlist:
     def __init__(self):
+        self.head = None
         self.current = None
 
     def add_song(self, song, artist):
         new_song = SongNode(song, artist)
-        if self.current is None:
+        if self.head is None:
+            self.head = new_song
             self.current = new_song
             return
 
-        current = self.current
+        current = self.head
         while current.next is not None:
             current = current.next
         current.next = new_song
 
     def skip_song(self):
-        if self.current is None:
+        if self.head is None:
             print("The playlist is empty add more songs!")
-            return
-
-        if self.current.next is None:
-            print(f"Finished playing: {self.current.song_title}. No more songs left!")
-            self.current = None
             return
 
         print(f"Skipping: {self.current.song_title}")
         self.current = self.current.next
         print(f"Now playing: {self.current.song_title}")
+
 
     def play_all(self):
         current_song = self.current
